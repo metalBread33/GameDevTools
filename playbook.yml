@@ -9,3 +9,18 @@
         state: present
       become: true
       become_method: sudo
+
+    - name: Edit .vimrc
+      ansible.builtin.blockinfile:
+        path: ~/.vimrc
+        marker: '" {mark} ANSIBLE MANAGED BLOCK'
+        block: |
+          set number
+          syntax on
+          set cursorline
+          set cursorcolumn
+          set shiftwidth=4
+          set tabstop=4
+          set expandtab
+        create: yes
+
